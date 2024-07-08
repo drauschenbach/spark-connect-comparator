@@ -17,8 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let reflection_service = tonic_reflection::server::Builder::configure()
         //.register_encoded_file_descriptor_set(spark_connect::FILE_DESCRIPTOR_SET)
-        .build()
-        .unwrap();
+        .build()?;
 
     Server::builder()
         .add_service(SparkConnectServiceServer::new(server))
